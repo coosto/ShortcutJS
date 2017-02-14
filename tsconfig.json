@@ -1,15 +1,18 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "lib": ["es2016", "dom"],
-        "noImplicitAny": false,
-        "sourceMap": false,
-        "moduleResolution": "node",
-        "declaration": true,
-        "outDir": "types",
-        "typeRoots": [
-          "node_modules/@types"
-        ]
-    }
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"lib": [
+			"es2016",
+			"dom"
+		],
+		"noImplicitAny": false,
+		"sourceMap": false,
+		"moduleResolution": "node",
+		"declaration": true,
+		"outDir": "types",
+		"typeRoots": [
+			"node_modules/@types"
+		]
+	}
 }
