@@ -8,7 +8,7 @@ export class Options implements IOptions {
   /**
    * Prints combo states when processing and matching combos
    */
-  public debug: boolean = false
+  public debuge: boolean = false
 
   /**
    * Automatically calls preventDefault when an Action is triggered
