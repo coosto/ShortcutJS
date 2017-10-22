@@ -4,11 +4,12 @@ export interface IOptions {
   onlyStateCombos?: boolean
 }
 
+// Options class
 export class Options implements IOptions {
   /**
    * Prints combo states when processing and matching combos
    */
-  public debuge: boolean = false
+  public debug: boolean = false
 
   /**
    * Automatically calls preventDefault when an Action is triggered
