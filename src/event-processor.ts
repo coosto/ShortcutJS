@@ -43,6 +43,10 @@ export class EventProcessor {
       }
 
       this.processActionCombos(ev, actions, options)
+
+      if (this.currentCombo.stateKeys.cmd) {
+        this.cleanCombo(options)
+      }
     }
   }
 
