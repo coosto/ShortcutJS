@@ -61,7 +61,11 @@ export class EventProcessor {
    * Search for matching actions, given a keyCombo, and execute its callbacks
    */
   public processActionCombos (ev: KeyboardEvent, actions: Map<string, Action>, options: IOptions) {
-    for (let action of actions.values()) {
+    let actionCombos = Array(...actions.values())
+    if (options.reverseActions) {
+      actionCombos.reverse()
+    }
+    for (let action of actionCombos) {
       if (this.matchesComboAction(action)) {
         if (options.debug) {
           this.printDebugActionFound(action)

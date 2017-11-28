@@ -28,14 +28,22 @@ describe('EventProcessor', () => {
   let actions: Map<string, Action>
   let cb = jest.fn()
   let cb2 = jest.fn()
+  let cb3 = jest.fn()
+  let cb4 = jest.fn()
 
   beforeEach(() => {
     eventProcessor = new EventProcessor()
     actions = new Map()
     const action = new Action('action', KeyCombo.fromString('ctrl a'))
+    const newaction = new Action('newaction', KeyCombo.fromString('ctrl b'))
+    const othernewaction = new Action('othernewaction', KeyCombo.fromString('ctrl b'))
     action.addCallback(cb)
     action.addCallback(cb2)
+    newaction.addCallback(cb3)
+    othernewaction.addCallback(cb4)
     actions.set('action', action)
+    actions.set('newaction', newaction)
+    actions.set('othernewaction', othernewaction)
   })
 
   afterEach(() => {
@@ -130,6 +138,20 @@ describe('EventProcessor', () => {
       const ev = getMockedEvent(65, { ctrlKey: true } as any)
       eventProcessor.processEvent(ev, actions, opt) // a
       expect(ev.preventDefault).toHaveBeenCalledTimes(1)
+    })
+
+    it('calls the oldest callback per shortcut', () => {
+      const opt = new Options()
+      eventProcessor.processEvent(getMockedEvent(17, { ctrlKey: true } as any), actions, opt) // ctrl
+      eventProcessor.processEvent(getMockedEvent(66, { ctrlKey: true } as any), actions, opt) // b
+      expect(cb3).toBeCalled()
+    })
+
+    it('calls the newest callback per shortcut if reverseActions option is passed', () => {
+      const opt = new Options({ reverseActions: true })
+      eventProcessor.processEvent(getMockedEvent(17, { ctrlKey: true } as any), actions, opt) // ctrl
+      eventProcessor.processEvent(getMockedEvent(66, { ctrlKey: true } as any), actions, opt) // b
+      expect(cb4).toBeCalled()
     })
   })
 })

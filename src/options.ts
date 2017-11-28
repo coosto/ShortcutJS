@@ -2,6 +2,7 @@ export interface IOptions {
   debug?: boolean
   preventDefault?: boolean
   onlyStateCombos?: boolean
+  reverseActions?: boolean
 }
 
 // Options class
@@ -20,6 +21,11 @@ export class Options implements IOptions {
    * Only process combos with State keys (cmd, ctrl, alt, shift)
    */
   public onlyStateCombos: boolean = false
+
+  /**
+   * Process combos in LIFO order
+   */
+  public reverseActions: boolean = false
 
   constructor(obj?: IOptions) {
     if (obj && Object.keys(obj).some(key => typeof this[key] === 'undefined')) {
