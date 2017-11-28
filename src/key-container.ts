@@ -89,6 +89,7 @@ export class KeyContainer {
     'pagedown': 34,
     'end': 35,
     'home': 36,
+    'tab': 9,
 
     // numpad
     'num0': 96,
