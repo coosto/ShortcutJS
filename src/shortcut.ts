@@ -30,6 +30,7 @@ export interface ShortcutJS {
   reset(): void
   loadFromJson(json: any, options?: IOptions): void
   addAction(action: Action): void
+  removeAction(action: Action): void
   subscribe(actionName: string, cb: Function): void
   unsubscribe(actionName: string, cb?: Function): void
   processEvent(ev: KeyboardEvent): void
@@ -111,6 +112,18 @@ class Shortcut implements ShortcutJS {
     }
 
     this.actions.set(action.name, action)
+  }
+
+  public removeAction (action: Action) {
+    if (!(action instanceof Action)) {
+      throw new Error('You must pass an Action instance object')
+    }
+
+    if (!this.actions.has(action.name)) {
+      throw new Error(`Action ${action.name} does not exist`)
+    }
+
+    this.actions.delete(action.name)
   }
 
   public subscribe (actionName: string, cb: Function) {

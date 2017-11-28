@@ -92,6 +92,26 @@ describe('shortcutJS', () => {
     })
   })
 
+  describe('removeAction', () => {
+    it('removes an action', () => {
+      const combo = KeyCombo.fromString('ctrl a')
+      const action = new Action('action', combo)
+      shortcutJS.addAction(action)
+      expect(shortcutJS.actions.size).toEqual(1)
+      shortcutJS.removeAction(action)
+      expect(shortcutJS.actions.size).toEqual(0)
+    })
+
+    it('throws an error if an action is not passed', () => {
+      expect(() => shortcutJS.removeAction(null as any)).toThrowError()
+    })
+
+    it('throws an error if an unregistered action is passed', () => {
+      const action = new Action('newaction', KeyCombo.fromString('ctrl b'))
+      expect(() => shortcutJS.removeAction(action)).toThrowError()
+    })
+  })
+
   describe('subscribe', () => {
     it('adds a new callback', () => {
       const combo = KeyCombo.fromString('ctrl a')
