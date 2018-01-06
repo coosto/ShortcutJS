@@ -77,6 +77,8 @@ export class KeyContainer {
     'shift': 16,
     'ctrl': 17,
     'alt': 18,
+    'esc': 27,
+    'escape': 27,
 
     // navigation
     'left': 37,
