@@ -72,6 +72,7 @@ export class KeyContainer {
     // punctuation
     ',': 188,
     '.': 190,
+		'/':191,
 
     // special
     'shift': 16,
