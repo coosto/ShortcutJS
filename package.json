@@ -58,7 +58,7 @@
     "husky": "^0.13.1",
     "jest": "^18.1.0",
     "rimraf": "^2.5.4",
-    "semantic-release": "^6.3.2",
+    "semantic-release": "^17.2.3",
     "ts-jest": "^18.0.1",
     "ts-loader": "^2.0.0",
     "ts-node": "^2.0.0",
